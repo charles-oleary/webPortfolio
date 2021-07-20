@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Hockey Project</title>
+		<script src="portfolio.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="main.css">
+		<!--	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+																				                   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+																								                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+																										<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+	</head>
+	<body>
+		<div class="container-fluid">
+			
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="topNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="resume.html">Resume</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="hockey.html">Hockey<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="weather.html">Weather</a>	
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="movies.html">Movies</a>
+						</li>
+					</ul>	
+				</div>
+			</nav>
+
+
+
+			<div class="mainContent">
+				<div class="jumbotron" style="text-align:center">
+					<h1 style="text-align:center">NHL Player Statistics</h1>
+					</br>
+					<p>The purpose of this project is to pull recent statistics from the National Hockey League's teams and players. As someone who has played his whole life, I like to keep up on how teams and players have been performing throughout the season.</p>
+
+					<p style="font-weight:bold;">Copyright: "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved." </p>
+					<p> This information was gathered from the NHL's Undocumented REST API by @nick_kinlen </p> 
+					<form id="hockeyForm">
+						<div class="form-group">
+							<label for"hockeyTeamDropdown">Select Hockey Team: </label>
+							</br>
+							<select id="hockeyTeamDropdown">
+								<option selected>Team: </option>
+								<option value=1>New Jersey Devils</option>
+								<option value=2>New York Islanders</option>
+								<option value=3>New York Rangers</option>
+								<option value=4>Philidelphia Flyers</option>
+								<option value=5>Pittsburgh Penguins</option>
+								<option value=6>Boston Bruins</option>
+								<option value=7>Buffalo Sabres</option>
+								<option value=8>Montreal Canadians</option>
+								<option value=9>Ottawa Senators</option>
+								<option value=10>Toronto Maple Leafs</option>
+								<option value=12>Carolina Hurricanes</option>
+								<option value=13>Florida Panthers</option>
+								<option value=14>Tampa Bay Lightning</option>
+								<option value=15>Washington Capitals</option>
+								<option value=16>Chicago Blackhawks</option>
+								<option value=17>Detroit Red Wings</option>
+								<option value=18>Nashville Predators</option>
+								<option value=19>St. Louis Blues</option>
+								<option value=20>Calgary Flames</option>
+								<option value=21>Colorado Avalance</option>
+								<option value=22>Edmonton Oilers</option>
+								<option value=23>Vancouver Canucks</option>
+								<option value=24>Anaheim Ducks</option>
+								<option value=25>Dallas Stars</option>
+								<option value=26>Los Angeles Kings</option>
+								<option value=28>San Jose Sharks</option>
+								<option value=29>Columbus Blue Jackets</option>
+								<option value=30>Minnesota Wild</option>
+								<option value=52>Winnepeg Jets</option>
+								<option value=53>Arizona Coyotes</option>
+								<option value=54>Vegas Golden Knights</option>
+								<!--	<option value=55>Seattle Kraken</option> -->
+
+							</select>
+							</br>
+							<button type="button" onclick="getPlayerStats()"class="btn btn-primary" id="teamButton">Get Team Stats!
+							</button>
+							</br>
+						</div>
+					</form>
+				</div>
+
+
+				<div id="playerStats">
+					<div class="jumbotron" style="overflow-x:auto;">
+						<table id="playerTable"></table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script src="portfolio.js"></script>
+<style>
+
+@media
+only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { border: 1px solid #dddddd;}
+
+	td {
+		border: none;
+		border: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+/*
+	td:before {
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10%;
+		white-space: nowrap;
+	}
+*/
+	td:nth-of-type(1):before { content: "Name:              "; }
+	td:nth-of-type(2):before { content: "Games:             "; }
+	td:nth-of-type(3):before { content: "Points:            "; }
+	td:nth-of-type(4):before { content: "Goals:             "; }
+	td:nth-of-type(5):before { content: "Assists:           "; }
+
+}
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width:100%;
+	}
+
+	td, th {
+		border: 1px solid #dddddd;
+		text-align:left;
+		padding:8px;
+
+	}
+
+	tr:nth-child(even) {
+		background-color:#dddddd;
+	}
+
+	.jumbotron {
+		border-radius:25px;
+	}
+</style>
+</html>
